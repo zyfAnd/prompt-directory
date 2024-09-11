@@ -22,7 +22,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   template: `
     <app-header></app-header>
     <mat-sidenav-container>
-      <mat-sidenav mode="side" opened>
+      <mat-sidenav mode="side" opened class="sidenav">
         <app-sidebar></app-sidebar>
       </mat-sidenav>
       <mat-sidenav-content>
@@ -30,6 +30,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
       </mat-sidenav-content>
     </mat-sidenav-container>
   `,
-  styles: []
+  styles: [`
+    .sidenav {
+      width: 200px; /* 设置侧边栏宽度 */
+    }
+  `]
 })
 export class AppComponent { }
