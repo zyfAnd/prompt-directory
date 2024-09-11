@@ -11,17 +11,14 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [CommonModule, MatCardModule, MatChipsModule, MatIconModule, MatButtonModule],
   template: `
     <mat-card class="prompt-card">
-      <mat-card-content>
+      <div class="card-content">
         <p class="prompt-description">{{ prompt.description }}</p>
         <h3 class="principles-title">{{ prompt.principlesTitle }}</h3>
         <ul class="principles-list">
           <li *ngFor="let principle of prompt.principles">{{ principle }}</li>
         </ul>
-      </mat-card-content>
+      </div>
       <mat-card-footer>
-        <div class="author-info">
-          <span class="author-name">{{ prompt.author }}</span>
-        </div>
         <div class="tags">
           <mat-chip-listbox>
             <mat-chip *ngFor="let tag of prompt.tags">{{ tag }}</mat-chip>
@@ -40,20 +37,31 @@ import { MatButtonModule } from '@angular/material/button';
       background-color: #f5f5f5;
       border-radius: 8px;
       padding: 16px;
-      height: 100%;
+      height: 300px; /* 固定高度 */
       display: flex;
       flex-direction: column;
       position: relative;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .prompt-card:hover {
+      background-color: #e0e0e0;
+    }
+    .card-content {
+      flex: 1;
+      overflow-y: auto;
     }
     .prompt-description {
       font-size: 14px;
-      color: #333;
+      color: #666;
       margin-bottom: 16px;
+      transition: color 0.3s;
     }
     .principles-title {
       font-size: 16px;
       font-weight: bold;
       margin-bottom: 8px;
+      color: #666;
+      transition: color 0.3s;
     }
     .principles-list {
       padding-left: 20px;
@@ -61,8 +69,14 @@ import { MatButtonModule } from '@angular/material/button';
     }
     .principles-list li {
       font-size: 14px;
-      color: #555;
+      color: #666;
       margin-bottom: 4px;
+      transition: color 0.3s;
+    }
+    .prompt-card:hover .prompt-description,
+    .prompt-card:hover .principles-title,
+    .prompt-card:hover .principles-list li {
+      color: #333;
     }
     mat-card-footer {
       display: flex;
@@ -71,9 +85,6 @@ import { MatButtonModule } from '@angular/material/button';
       padding: 8px 16px;
       background-color: #fff;
       border-top: 1px solid #eee;
-    }
-    .author-info {
-      display: none; /* 隐藏作者信息 */
     }
     .tags {
       display: flex;

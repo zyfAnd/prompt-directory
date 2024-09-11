@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, MatListModule],
+  imports: [CommonModule, MatListModule, RouterModule],
   template: `
     <mat-nav-list>
       <h3 mat-subheader>Categories</h3>
-      <a mat-list-item *ngFor="let category of categories">
+      <a mat-list-item *ngFor="let category of categories" [routerLink]="category.link">
         {{ category.name }}
         <span class="count">{{ category.count }}</span>
       </a>
@@ -31,9 +32,9 @@ import { MatListModule } from '@angular/material/list';
 })
 export class SidebarComponent {
   categories = [
-    { name: 'TypeScript', count: 10 },
-    { name: 'Python', count: 8 },
-    { name: 'React', count: 7 },
+    { name: 'TypeScript', count: 10, link: '/typescript' },
+    { name: 'Python', count: 8, link: '/python' },
+    { name: 'React', count: 7, link: '/react' },
     // ... 添加更多类别
   ];
 }

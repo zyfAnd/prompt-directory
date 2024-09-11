@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { PromptListComponent } from './prompt-list/prompt-list.component';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +15,9 @@ import { PromptListComponent } from './prompt-list/prompt-list.component';
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
+    RouterModule,
     HeaderComponent,
-    SidebarComponent,
-    PromptListComponent
+    SidebarComponent
   ],
   template: `
     <app-header></app-header>
@@ -26,7 +26,7 @@ import { PromptListComponent } from './prompt-list/prompt-list.component';
         <app-sidebar></app-sidebar>
       </mat-sidenav>
       <mat-sidenav-content>
-        <app-prompt-list></app-prompt-list>
+        <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container>
   `,
