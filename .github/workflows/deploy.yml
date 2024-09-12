@@ -31,7 +31,9 @@ jobs:
         SERVER_HOST: ${{ secrets.SERVER_HOST }}
         SERVER_PATH: ${{ secrets.SERVER_PATH }}
       run: |
-        echo "$SSH_PRIVATE_KEY" > private_key
-        chmod 600 private_key
-        rsync -avz -e "ssh -i private_key" dist/browser/ $SERVER_USER@$SERVER_HOST:$SERVER_PATH
-        rm private_key
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H $SERVER_HOST >> ~/.ssh/known_hosts
+        rsync -avz -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" dist/browser/ $SERVER_USER@$SERVER_HOST:$SERVER_PATH
+        rm ~/.ssh/id_rsa
