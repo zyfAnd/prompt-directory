@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   template: `
-    <mat-toolbar color="primary" class="toolbar">
+    <mat-toolbar class="toolbar">
       <span>Prompts</span>
       <span class="spacer"></span>
       <div class="subscribe-container">
@@ -30,8 +30,10 @@ import { FormsModule } from '@angular/forms';
   `,
   styles: [`
     .toolbar {
-      align-items: center; /* 确保工具栏内容垂直居中 */
-      padding-top: 8px; /* 添加顶部内边距 */
+      background-color: white !important;
+      color: black !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 0 16px;
     }
     .spacer {
       flex: 1 1 auto;
