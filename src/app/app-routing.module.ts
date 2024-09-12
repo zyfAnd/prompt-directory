@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'react', component: PromptListComponent, data: { category: 'React' } },
   { path: 'java', component: PromptListComponent, data: { category: 'Java' } },
   { path: 'web', component: PromptListComponent, data: { category: 'Web' } },
+  { path: 'beginner', component: PromptListComponent, data: { category: 'Beginner' } },
   { path: '', redirectTo: '/typescript', pathMatch: 'full' },
   { path: '**', redirectTo: '/typescript' }
 ];
