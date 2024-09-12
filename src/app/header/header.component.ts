@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
       <span>Prompts</span>
       <div class="spacer"></div>
       <div class="input-container">
-        <input matInput placeholder="Get latest updates" class="custom-input">
+        <input matInput placeholder="Input your email" class="custom-input">
         <button mat-raised-button class="subscribe-button">Subscribe</button>
       </div>
     </mat-toolbar>
