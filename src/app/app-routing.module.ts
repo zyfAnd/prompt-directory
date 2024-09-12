@@ -10,8 +10,10 @@ const routes: Routes = [
   { path: 'web', component: PromptListComponent, data: { category: 'Web' } },
   { path: 'beginner', component: PromptListComponent, data: { category: 'Beginner' } },
   { path: 'angular', component: PromptListComponent, data: { category: 'Angular' } },
+  { path: 'uiux-design', component: PromptListComponent, data: { category: 'UIUX-Design' } },
   { path: '', redirectTo: '/typescript', pathMatch: 'full' },
-  { path: '**', redirectTo: '/typescript' }
+  { path: '**', redirectTo: '/typescript' },
+  
 ];
 
 @NgModule({
