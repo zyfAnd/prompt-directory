@@ -1,39 +1,50 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatButtonModule,
-    RouterModule,
-    HeaderComponent,
-    SidebarComponent
-  ],
+  imports: [CommonModule, RouterOutlet, HeaderComponent, SidebarComponent],
   template: `
-    <app-header></app-header>
-    <mat-sidenav-container>
-      <mat-sidenav mode="side" opened class="sidenav">
+    <div class="app-container">
+      <app-header></app-header>
+      <div class="content-container">
         <app-sidebar></app-sidebar>
-      </mat-sidenav>
-      <mat-sidenav-content>
-        <router-outlet></router-outlet>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
+        <main class="main-content">
+          <router-outlet></router-outlet>
+        </main>
+      </div>
+      <footer class="footer">
+        <p>© 2024 Yanfu, Inc.</p>
+      </footer>
+    </div>
   `,
   styles: [`
-    .sidenav {
-      width: 200px; /* 设置侧边栏宽度 */
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .content-container {
+      display: flex;
+      flex: 1;
+    }
+    .main-content {
+      flex: 1;
+      padding: 20px;
+    }
+    .footer {
+      background-color: #f5f5f5;
+      padding: 10px 0;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
     }
   `]
 })
-export class AppComponent { }
+export class AppComponent {
+  title = 'Prompts';
+}
