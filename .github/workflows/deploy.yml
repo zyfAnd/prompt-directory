@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '18'
 
     - name: Install dependencies
       run: npm install
@@ -33,5 +33,5 @@ jobs:
       run: |
         echo "$SSH_PRIVATE_KEY" > private_key
         chmod 600 private_key
-        rsync -avz -e "ssh -i private_key" dist/ $SERVER_USER@$SERVER_HOST:$SERVER_PATH
+        rsync -avz -e "ssh -i private_key" dist/browser/ $SERVER_USER@$SERVER_HOST:$SERVER_PATH
         rm private_key

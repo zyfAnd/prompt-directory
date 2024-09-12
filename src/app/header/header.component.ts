@@ -60,15 +60,15 @@ import { FormsModule } from '@angular/forms';
       height: 100%; /* 确保输入框内容高度一致 */
     }
     .input-field .mat-form-field-outline {
-      top: 0; /* 调整 outline 的位置 */
+      top: -4px; /* 调整 outline 的位置，确保不被截断 */
     }
     .input-field .mat-form-field-infix {
       padding: 0; /* 移除 infix 的内边距 */
     }
-    button {
+    .subscribe-button {
       margin-left: 8px;
-      background-color: #000;
-      color: #000; /* 修改按钮字体颜色为黑色 */
+      background-color: #000 !important; /* 修改按钮背景颜色为黑色 */
+      color: #fff !important; /* 修改按钮字体颜色为白色 */
       height: 36px; /* 确保按钮高度与输入框一致 */
       line-height: 36px; /* 确保按钮文本垂直居中 */
     }
