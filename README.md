@@ -1,4 +1,4 @@
-# Angular Prompt Directory 项目指南
+#  Prompt  项目指南
 
 ## 项目概述
 
