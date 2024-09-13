@@ -2,12 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
-import { prompts } from '../prompts';
+
+// Remove this line: import { prompts } from '../prompts';
 
 interface Category {
   name: string;
   count: number;
   link: string;
+}
+
+interface CategoryGroup {
+  name: string;
+  categories: Category[];
 }
 
 @Component({
@@ -16,13 +22,15 @@ interface Category {
   imports: [CommonModule, MatListModule, RouterModule],
   template: `
     <mat-nav-list class="sidebar-list">
-      <h3 mat-subheader class="category-header">Categories</h3>
-      <a mat-list-item *ngFor="let category of categories" [routerLink]="category.link">
-        <div class="category-item">
-          <span class="category-name">{{ category.name }}</span>
-          <span class="count">{{ category.count }}</span>
-        </div>
-      </a>
+      <ng-container *ngFor="let group of categoryGroups">
+        <h3 mat-subheader class="category-header">{{ group.name }}</h3>
+        <a mat-list-item *ngFor="let category of group.categories" [routerLink]="category.link">
+          <div class="category-item">
+            <span class="category-name">{{ category.name }}</span>
+            <span class="count">{{ category.count }}</span>
+          </div>
+        </a>
+      </ng-container>
     </mat-nav-list>
   `,
   styles: [`
@@ -34,6 +42,7 @@ interface Category {
       color: #666;
       font-weight: normal;
       margin-bottom: 8px;
+      margin-top: 16px;
     }
     .category-item {
       display: flex;
@@ -57,26 +66,44 @@ interface Category {
   `]
 })
 export class SidebarComponent implements OnInit {
-  categories: Category[] = [];
+  categoryGroups: CategoryGroup[] = [];
 
   ngOnInit() {
     this.calculateCategoryCounts();
   }
 
   calculateCategoryCounts() {
-    const categoryCounts = new Map<string, number>();
+    // Move the import inside the method
+    import('../prompts').then(module => {
+      const prompts = module.prompts;
+      const categoryCounts = new Map<string, number>();
 
-    prompts.forEach(prompt => {
-      const count = categoryCounts.get(prompt.category) || 0;
-      categoryCounts.set(prompt.category, count + 1);
+      prompts.forEach(prompt => {
+        const count = categoryCounts.get(prompt.category) || 0;
+        categoryCounts.set(prompt.category, count + 1);
+      });
+
+      const programmingLanguages: Category[] = [];
+      const acting: Category[] = [];
+
+      categoryCounts.forEach((count, name) => {
+        const category: Category = {
+          name,
+          count,
+          link: `/${name.toLowerCase().replace(/\s+/g, '-')}`
+        };
+
+        if (['TypeScript', 'Python', 'Angular'].includes(name)) {
+          programmingLanguages.push(category);
+        } else {
+          acting.push(category);
+        }
+      });
+
+      this.categoryGroups = [
+        { name: 'Programming Languages', categories: programmingLanguages.sort((a, b) => a.name.localeCompare(b.name)) },
+        { name: 'Acting', categories: acting.sort((a, b) => a.name.localeCompare(b.name)) }
+      ];
     });
-
-    this.categories = Array.from(categoryCounts.entries()).map(([name, count]) => ({
-      name,
-      count,
-      link: `/${name.toLowerCase().replace(/\s+/g, '-')}`
-    }));
-
-    this.categories.sort((a, b) => a.name.localeCompare(b.name));
   }
 }
