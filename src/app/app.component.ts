@@ -18,7 +18,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
         </main>
       </div>
       <footer class="footer">
-        <p>© 2024 Yanfu, Inc.</p>
+        <p>
+          © 2024 Yanfu, Inc. 
+          <a href="https://github.com/zyfAnd/prompt-directory" target="_blank" rel="noopener noreferrer">
+            Prompt contribute
+          </a>
+        </p>
       </footer>
     </div>
   `,
@@ -42,6 +47,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
       text-align: center;
       font-size: 14px;
       color: #666;
+    }
+    .footer a {
+      color: #007bff;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+    .footer a:hover {
+      text-decoration: underline;
     }
   `]
 })
