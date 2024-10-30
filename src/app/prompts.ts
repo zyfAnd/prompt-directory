@@ -10,6 +10,7 @@ import { marketingStrategyPrompts } from './prompts/marketing-strategy-prompts';
 import { angularPrompts } from './prompts/angular-prompts';
 import { webDeveloperPrompts } from './prompts/web-developer-prompts';
 import { businessAnalysisPrompts } from './prompts/business-analysis-prompts';
+import { reactPrompts } from './prompts/react-prompts';
 
 export const prompts: Prompt[] = [
   ...typescriptPrompts,
@@ -22,7 +23,8 @@ export const prompts: Prompt[] = [
   ...marketingStrategyPrompts,
   ...angularPrompts,
   ...webDeveloperPrompts,
-  ...businessAnalysisPrompts
+  ...businessAnalysisPrompts,
+  ...reactPrompts
 ];
 
 export { Prompt };
