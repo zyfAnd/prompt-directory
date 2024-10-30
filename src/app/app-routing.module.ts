@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'typescript', component: PromptListComponent, data: { category: 'TypeScript' } },
   { path: 'python', component: PromptListComponent, data: { category: 'Python' } },
   { path: 'angular', component: PromptListComponent, data: { category: 'Angular' } },
+  { path: 'react', component: PromptListComponent, data: { category: 'React' } },
   
   // Acting
   { path: 'web', component: PromptListComponent, data: { category: 'Web' } },
