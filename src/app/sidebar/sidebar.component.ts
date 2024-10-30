@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 
-// Remove this line: import { prompts } from '../prompts';
-
 interface Category {
   name: string;
   count: number;
@@ -73,7 +71,6 @@ export class SidebarComponent implements OnInit {
   }
 
   calculateCategoryCounts() {
-    // Move the import inside the method
     import('../prompts').then(module => {
       const prompts = module.prompts;
       const categoryCounts = new Map<string, number>();
@@ -93,7 +90,7 @@ export class SidebarComponent implements OnInit {
           link: `/${name.toLowerCase().replace(/\s+/g, '-')}`
         };
 
-        if (['TypeScript', 'Python', 'Angular'].includes(name)) {
+        if (['TypeScript', 'Python', 'Angular', 'React'].includes(name)) {
           programmingLanguages.push(category);
         } else {
           acting.push(category);
@@ -101,8 +98,14 @@ export class SidebarComponent implements OnInit {
       });
 
       this.categoryGroups = [
-        { name: 'Programming Languages', categories: programmingLanguages.sort((a, b) => a.name.localeCompare(b.name)) },
-        { name: 'Acting', categories: acting.sort((a, b) => a.name.localeCompare(b.name)) }
+        { 
+          name: 'Programming Languages', 
+          categories: programmingLanguages.sort((a, b) => a.name.localeCompare(b.name)) 
+        },
+        { 
+          name: 'Acting', 
+          categories: acting.sort((a, b) => a.name.localeCompare(b.name)) 
+        }
       ];
     });
   }
