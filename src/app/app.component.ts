@@ -23,6 +23,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
           <a href="https://github.com/zyfAnd/prompt-directory" target="_blank" rel="noopener noreferrer">
             Prompt contribute
           </a>
+          <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer" class="beian-link">
+            沪ICP备2024064624号
+          </a>
         </p>
       </footer>
     </div>
@@ -55,6 +58,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     }
     .footer a:hover {
       text-decoration: underline;
+    }
+    .beian-link {
+      color: #666 !important;
     }
   `]
 })
