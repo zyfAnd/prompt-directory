@@ -24,7 +24,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
             Prompt contribute
           </a>
           <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer" class="beian-link">
-            沪ICP备2024064624号
+            沪ICP备2024064624号-2
           </a>
         </p>
       </footer>
